@@ -25,7 +25,12 @@ func main() {
 			fmt.Scan(&perintah)
 			// tambah subscription apa saja
 		case "2":
-
+			cetakarr(arr, n)
+			hapusarray(&arr, &n)
+			fmt.Println(n)
+			cetakarr(arr, n)
+			cetakUI()
+			fmt.Scan(&perintah)
 			//hapus langganan
 		case "3":
 			fmt.Printf("Banyaknya langganan %d", n)
@@ -60,5 +65,21 @@ func baca(A *finansialManage, n *int) {
 		A[*n].biaya = cost
 		*n++
 		fmt.Scan(&nLangganan)
+	}
+}
+func hapusarray(A *finansialManage, n *int){
+	var i , j int
+	fmt.Print("Pilih nomor yang ingin dihapus")
+	fmt.Scan(&j)
+	for i = 0 ; i<*n ; i++{
+		A[j-1]=A[j]
+		j++
+	}	
+	*n = i-1
+}
+func cetakarr(A finansialManage, n int){
+	var i int
+	for i = 0; i<n ; i++{
+		fmt.Printf("%d. %s %d\n",i+1 , A[i].namaLangganan, A[i].biaya )
 	}
 }
